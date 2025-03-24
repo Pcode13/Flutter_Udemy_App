@@ -13,30 +13,32 @@ class MyApp extends StatelessWidget {
         home: Scaffold(
             backgroundColor: Colors.teal,
             body:SafeArea(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                      width: 100.0,
-                      color: Colors.pink,
-                    ),
-                    // SizedBox(width: 30),
-                    Container(
-                     child: Column(
-                       mainAxisAlignment: MainAxisAlignment.center,
-                       children: <Widget>[
-                         Container(width: 100.0,height: 100.0,color: Colors.yellow),
-                      Container(width: 100.0,height: 100.0,color: Colors.yellow.shade300),]
-                     ),
-                    ),
-                    // SizedBox(width: 30),
-                    Container(
-                      width: 100.0,
-                      color: Colors.white70,
-                    ),
+                child:
+             Column(
+               // mainAxisAlignment: MainAxisAlignment.center,
+               children: [
+                 CircleAvatar(
+                   radius: 50.0,
+                   backgroundImage: AssetImage('images/d1.jpg'),
 
-                  ],
-                )
+                 ),
+                 Text('Pragati Veer',
+                 style: TextStyle(
+                     fontSize: 40.0,
+                 color: Colors.white70,
+                 fontWeight:FontWeight.bold,
+                   fontFamily: 'Pacifico'
+                 ),),
+                 Text('Clover Infotech',
+                 style: TextStyle(
+                     fontSize: 20.0,
+                     color: Colors.teal.shade100,
+                     fontWeight:FontWeight.bold,
+                     fontFamily: 'SourceSansPro',
+                   letterSpacing: 2.5
+                 ),)
+               ],
+             )
             )
 
 
