@@ -1,94 +1,70 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
-void main(){
-  runApp(MyApp());
+void main() {
+  return runApp(
+    MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.red,
+        appBar: AppBar(
+          title: Text('Dice'),
+          backgroundColor: Colors.red,
+        ),
+        body: DicePage(),
+      ),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class DicePage extends StatefulWidget {
+  const DicePage({super.key});
 
   @override
+  State<DicePage> createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+  @override
+  int leftDiceNumbers=5;
+  int rightDiceNumbers=2;
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-            backgroundColor: Colors.teal,
-            body:SafeArea(
-                child:
-             Column(
-               mainAxisAlignment: MainAxisAlignment.center,
-               children: [
-                 CircleAvatar(
-                   radius: 50.0,
-                   backgroundImage: AssetImage('images/d1.jpg'),
 
-                 ),
-                 Text('Pragati Veer',
-                 style: TextStyle(
-                     fontSize: 40.0,
-                 color: Colors.white70,
-                 fontWeight:FontWeight.bold,
-                   fontFamily: 'Pacifico'
-                 ),),
-                 Text('Clover Infotech',
-                 style: TextStyle(
-                     fontSize: 20.0,
-                     color: Colors.teal.shade100,
-                     fontWeight:FontWeight.bold,
-                     fontFamily: 'SourceSansPro',
-                   letterSpacing: 2.5
-                 ),),
-                 SizedBox(height: 20.0,
-                 width: 150.0,
-                 child: Divider(
-                   color: Colors.teal.shade100,
-                 ),
-                 ),
-                 Card(
+    return  Center(
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child:
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    leftDiceNumbers=Random().nextInt(6)+1;
+                    print('First Button Pressed: $leftDiceNumbers');
+                  });
 
-                   margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                   child: ListTile(
-                     leading: Icon(Icons.phone,color: Colors.teal,),
-                     title:
-                  Text('+91 9999999999',
-                  style:
-                TextStyle(fontSize: 20.0,color: Colors.teal.shade900,
-                   ),
-                     ),
+                },
+                icon: Image.asset('images/dice$leftDiceNumbers.png'),
+                iconSize: 50,
 
-                   )
-                 ),
-                 Card(
-                   margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                   child:
-                   ListTile(
-                     leading: Icon(Icons.email,color: Colors.teal,),
-                     title:
-                     Text('veer99@gmail.com',
-                       style:
-                       TextStyle(fontSize: 20.0,color: Colors.teal.shade900,
-                       ),
-                     ),
+              ),
 
-                   )
-
-                 )
-               ],
-             )
-            )
-
-
+            ),
+            Expanded(
+              child: IconButton(
+                icon: Image.asset('images/dice$rightDiceNumbers.png'),
+                iconSize: 50,
+                onPressed: () {
+                  setState(() {
+                    rightDiceNumbers=Random().nextInt(6)+1;
+                    print('Second Button Pressed: $rightDiceNumbers');
+                  });
+                },
+              ),
+            ),
+          ],
         )
     );
   }
 }
 
 
-// Row(
-// children: <Widget>[
-// Icon(Icons.email,color: Colors.teal,),
-// SizedBox(width: 10.0,),
-// Text('veer99@gmail.com',style: TextStyle(fontSize: 20.0,color: Colors.teal.shade900,
-// fontFamily: 'SourceSansPro'),
-// )
-// ],
-// )
