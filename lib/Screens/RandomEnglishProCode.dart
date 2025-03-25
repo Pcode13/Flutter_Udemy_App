@@ -78,7 +78,7 @@ class _RandomEnglishState extends State<RandomEnglish> {
             style: TextStyle(fontSize: 20.0, color: Colors.teal.shade900),
           ),
           const SizedBox(height: 20), // Added spacing
-         _buildButton('Generate Word',generateRandomWord),
+          _buildButton('Generate Word',generateRandomWord),
           _buildButton('LowerCase',()=>generateLowerCaseWord(lowerCase: true)),
           _buildButton('UpperCase',()=>generateLowerCaseWord(upperCase: true)),
 

@@ -1,0 +1,71 @@
+import 'dart:ffi';
+import 'dart:math';
+
+import 'package:flutter/material.dart';
+
+void main() {
+  return runApp( const DiceApp());
+}
+
+class DiceApp extends StatelessWidget {
+  const DiceApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: BallPage()
+    );
+  }
+}
+
+class BallPage extends StatelessWidget {
+  const BallPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.blue,
+      appBar: AppBar(
+        backgroundColor: Colors.blue.shade900,
+        title: Text('Ask Me Anything'),
+      ),
+      body: Ball()
+    );
+  }
+}
+
+
+class Ball extends StatefulWidget {
+  const Ball({super.key});
+
+  @override
+  State<Ball> createState() => _BallState();
+}
+
+class _BallState extends State<Ball> {
+  int ballNumber=1;
+  void changeBallNumber() {
+    setState(() {
+      ballNumber = Random().nextInt(5) + 1;
+      print('Styled Button Clicked $ballNumber');
+  });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child:GestureDetector(
+        onTap: changeBallNumber,
+        child: Image.asset(
+          'images/ball$ballNumber.png',
+          width: 200, // Adjusted size for better visibility
+          height: 250,
+        ),
+      ),
+    );
+  }
+}
+
+
+
+

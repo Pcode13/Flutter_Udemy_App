@@ -50,15 +50,9 @@ class _RandomEnglishState extends State<RandomEnglish> {
     });
   }
 
-  void generateLowerCaseWord({bool upperCase=false,bool lowerCase=false}){
+  void generateLowerCaseWord(){
     setState(() {
-      if(upperCase){
-        text = WordPair.random().asUpperCase; // Generate a random English word
-      }else if(lowerCase){
-        text = WordPair.random().asLowerCase; // Generate a random English word
-      }else{
-        text = WordPair.random().asPascalCase; // Generate a random English word
-      }
+      text = WordPair.random().asLowerCase; // Generate a random English word
     });
   }
   void generateUpperCaseWord(){
@@ -78,32 +72,40 @@ class _RandomEnglishState extends State<RandomEnglish> {
             style: TextStyle(fontSize: 20.0, color: Colors.teal.shade900),
           ),
           const SizedBox(height: 20), // Added spacing
-         _buildButton('Generate Word',generateRandomWord),
-          _buildButton('LowerCase',()=>generateLowerCaseWord(lowerCase: true)),
-          _buildButton('UpperCase',()=>generateLowerCaseWord(upperCase: true)),
-
-
+          ElevatedButton(
+            onPressed: generateRandomWord, // Fixed function reference
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.teal.shade900,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+              textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            child: const Text('Generate Word'),
+          ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: generateUpperCaseWord, // Fixed function reference
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.teal.shade900,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+              textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            child: const Text('UpperCase'),
+          ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: generateLowerCaseWord, // Fixed function reference
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.teal.shade900,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+              textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            child: const Text('LowerCase'),
+          ),
         ],
       ),
     );
   }
 }
-
-Widget _buildButton(String text,VoidCallback onPressed){
-  return Padding(
-    padding: const EdgeInsets.all(10.0),
-    child: ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.teal.shade900,
-        foregroundColor: Colors.white,
-        padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-        textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-      ),
-      child: Text(text),
-    ),
-
-  );
-
-}
-
