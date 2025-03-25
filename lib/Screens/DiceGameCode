@@ -113,7 +113,7 @@ class DiceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(child: 
+    return Expanded(child:
         GestureDetector(
           onTap: onTap,
           child: Image.asset('images/dice$diceNumber.png',
