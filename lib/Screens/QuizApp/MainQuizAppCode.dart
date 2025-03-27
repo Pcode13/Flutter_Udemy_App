@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Screens/QuizApp/quizBank.dart';
+import 'quizBank.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 void main() => runApp(const QuizzApp());
