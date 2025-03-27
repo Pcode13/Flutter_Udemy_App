@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
-
 import 'Screens/QuizApp/question.dart';
 
 void main() => runApp(const QuizzApp());
@@ -60,7 +58,6 @@ class _QuizState extends State<Quiz> {
 
     setState(() {
       if (userAnswer == correctAnswer) {
-        print("User got it right");
         scoreKeeper.add(const Icon(Icons.check, color: Colors.green));
       } else {
         scoreKeeper.add(const Icon(Icons.close, color: Colors.red));
@@ -133,18 +130,3 @@ class _QuizState extends State<Quiz> {
     );
   }
 }
-
-// bool correctAnswer =questionList[questionNumber].questionAnswer;
-// print('questionNumber true: $correctAnswer');
-// setState(() {
-// print('questionNumber: $questionNumber');
-// if(correctAnswer==true){
-// print("User got it right");
-// scoreKeeper.add(const Icon(Icons.check, color: Colors.green));
-// }else{
-// print("User got it wrong");
-// scoreKeeper.add(const Icon(Icons.close, color: Colors.green));
-// }
-// questionNumber=questionNumber+1;
-// // scoreKeeper.add(const Icon(Icons.check, color: Colors.green));
-// });
